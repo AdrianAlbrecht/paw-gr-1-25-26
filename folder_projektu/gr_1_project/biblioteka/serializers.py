@@ -124,3 +124,27 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = "__all__"
+
+class OsobaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Osoba
+        fields = "__all__"
+        
+    def validate_imie(self, value):
+        if not value.istitle():
+            raise serializers.ValidationError(
+                "Imię powininno zawierać tylko litery i rozpoczynać się wielką literą!"
+            )
+        return value
+    
+    def validate_nazwisko(self, value):
+        if not value.istitle():
+            raise serializers.ValidationError(
+                "Nazwisko powininno zawierać tylko litery i rozpoczynać się wielką literą!"
+            )
+        return value
+    
+class StanowiskoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Stanowisko
+        fields = "__all__"

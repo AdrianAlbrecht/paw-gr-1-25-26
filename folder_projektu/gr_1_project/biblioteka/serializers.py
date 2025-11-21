@@ -124,7 +124,6 @@ class GenreSerializer(serializers.ModelSerializer):
         model = Genre
         fields = "__all__"
 
-
 class OsobaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Osoba
